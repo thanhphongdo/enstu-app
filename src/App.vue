@@ -1,29 +1,73 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+<div id="app">
+    <nav class="hide-on-med-and-down">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <router-link to="/">Home</router-link>
+                </li>
+                <li>
+                    <router-link to="/about">About</router-link>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container main-body">
+        <div class="row height-100">
+            <div class="col s12 height-100 no-padding">
+                <router-view />
+            </div>
+        </div>
     </div>
-    <router-view/>
-  </div>
+    <footer class="page-footer main-footer no-padding hide-on-large-only">
+        <div class="col l12">
+            <ul class="tabs tabs-fixed-width z-depth-1 tabs-bottom">
+                <li class="tab">
+                    <a class="active display-flex flex-column">
+                        <i class="fas fa-trophy"></i>
+                        <span>Thống kê</span>
+                    </a>
+                </li>
+                <li class="tab">
+                    <a>
+                        <i class="fas fa-tasks"></i>
+                        <span>Nhiệm vụ</span>
+                    </a>
+                </li>
+                <li class="tab">
+                    <a>
+                        <i class="fas fa-cog"></i>
+                        <span>Cài đặt</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<script>
+import {
+    mapActions
+} from "vuex";
+import {
+    mapGetters
+} from "vuex";
+import {
+    Actions,
+    Getters
+} from "./enums";
+export default {
+    name: "App",
+    components: {},
+    data() {
+        return {};
+    },
+    mounted() {
+        M.AutoInit();
+    },
+    methods: {},
+    computed: {}
+};
+</script>
