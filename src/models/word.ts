@@ -1,5 +1,5 @@
 import { JsonObject, JsonProperty, JsonCustomConvert, JsonConvert, JsonConverter, OperationMode, ValueCheckingMode } from 'json2typescript'
-import { DateConverter, ParseObeject, PointerConverter } from './global'
+import { DateConverter, ParseObeject, PointerConverter, FileConverter } from './global'
 import { Source } from './source'
 import { Topic } from './topic'
 import { Level } from './level'
@@ -17,6 +17,9 @@ export class Word extends ParseObeject {
 
     @JsonProperty('level', PointerConverter)
     level?: Level = undefined;
+
+    @JsonProperty('voiceEn', FileConverter)
+    voiceEn?: Level = undefined;
 
     checked?: boolean = false;
 }
