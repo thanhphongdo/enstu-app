@@ -1,12 +1,11 @@
-import { JsonObject, JsonProperty, JsonCustomConvert, JsonConvert, JsonConverter, OperationMode, ValueCheckingMode } from "json2typescript";
-import { DateConverter, ParseObeject, PointerConverter } from './global';
-import { Source } from './source';
-import { Topic } from './topic';
-import { Level } from './level';
+import { JsonObject, JsonProperty, JsonCustomConvert, JsonConvert, JsonConverter, OperationMode, ValueCheckingMode } from 'json2typescript'
+import { DateConverter, ParseObeject, PointerConverter } from './global'
+import { Source } from './source'
+import { Topic } from './topic'
+import { Level } from './level'
 
 @JsonObject('Word')
 export class Word extends ParseObeject {
-
     @JsonProperty('text', String)
     text?: String = undefined;
 

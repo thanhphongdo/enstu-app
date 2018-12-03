@@ -1,4 +1,4 @@
-import { Level, Topic } from '../models/index';
+import { Level, Topic } from '../models/index'
 
 export interface GetLevelBySource {
     (sourceId: string): {

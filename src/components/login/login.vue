@@ -25,8 +25,8 @@
             </div>
             <div class="row margin-top-20">
                 <div class="col s12">
-                    <button 
-                    class="waves-effect waves-orange-lighten-1 btn-flat light-blue-text text-darken-4 width-100 btn-sub" 
+                    <button
+                    class="waves-effect waves-orange-lighten-1 btn-flat light-blue-text text-darken-4 width-100 btn-sub"
                     type="submit"
                     @click="register">
                         Đăng ký tài khoản mới

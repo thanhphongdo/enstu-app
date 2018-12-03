@@ -1,4 +1,4 @@
-import { Level, Topic, Word } from '../models/index';
+import { Level, Topic, Word } from '../models/index'
 
 export interface SetLevelBySource {
     (sourceId: string): any;

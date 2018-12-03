@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import Vuex, { StoreOptions, Action, Getter, Mutation, Module } from 'vuex';
-import { Actions } from './enums';
-import { Source, Level, Topic, Word, LearningSource } from './models/index';
-import * as Service from './services/index';
+import Vue from 'vue'
+import Vuex, { StoreOptions, Action, Getter, Mutation, Module } from 'vuex'
+import { Actions } from './enums'
+import { Source, Level, Topic, Word, LearningSource } from './models/index'
+import * as Service from './services/index'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 // export default new Vuex.Store<{
 //     source?: Array<Source>,
@@ -60,7 +60,6 @@ Vue.use(Vuex);
 //     }
 // });
 
-
 export interface ManageDataModule{
     source?: Array<Source>,
     levels: {
@@ -85,87 +84,87 @@ export interface RootStateInterface {
 }
 
 const manageDataModule: Module<ManageDataModule, RootStateInterface> = {
-    state: {
-        source: [],
-        levels: {
-            EoT3y7nabE: []
-        },
-        topics: {
-            EoT3y7nabE: []
-        },
-        words:{
-            EoT3y7nabE: []
-        }
+  state: {
+    source: [],
+    levels: {
+      EoT3y7nabE: []
     },
-    getters: {
-        getLevelBySource: (state) => (sourceID: string) => {
-            return state.levels[sourceID];
-        },
-        getTopicBySource: (state) => (sourceID: string) => {
-            return state.topics[sourceID];
-        },
-        getWordBySource: (state) => (sourceID: string) => {
-            return state.words[sourceID];
-        },
+    topics: {
+      EoT3y7nabE: []
     },
-    mutations: {
-
-    },
-    actions: {
-        setLevelBySource: ({ commit, state }, sourceId) => {
-            if (state.levels[sourceId] && state.levels[sourceId].length) return;
-            Service.LevelService.getLevelBySource(sourceId).then(data => {
-                state.levels[sourceId] = data;
-            });
-        },
-        setTopicBySource: ({ commit, state }, sourceId) => {
-            if (state.topics[sourceId] && state.topics[sourceId].length) return;
-            Service.TopicService.getTopicBySource(sourceId).then(data => {
-                state.topics[sourceId] = data;
-            });
-        },
-        selectTopic: ({ commit, state }, { sourceId, levelId }) => {
-            for (var i in state.topics[sourceId]) {
-                if (state.topics[sourceId][i].id == levelId) {
-                    state.topics[sourceId][i].checked = !state.topics[sourceId][i].checked;
-                    break;
-                }
-            }
-        },
-        setWordBySource:({ commit, state }, sourceId) => {
-            if (state.words[sourceId] && state.words[sourceId].length) return Promise.resolve();
-            return Service.WordService.getWordBySource(sourceId).then(data => {
-                state.words[sourceId] = data;
-            });
-        },
+    words: {
+      EoT3y7nabE: []
     }
+  },
+  getters: {
+    getLevelBySource: (state) => (sourceID: string) => {
+      return state.levels[sourceID]
+    },
+    getTopicBySource: (state) => (sourceID: string) => {
+      return state.topics[sourceID]
+    },
+    getWordBySource: (state) => (sourceID: string) => {
+      return state.words[sourceID]
+    }
+  },
+  mutations: {
+
+  },
+  actions: {
+    setLevelBySource: ({ commit, state }, sourceId) => {
+      if (state.levels[sourceId] && state.levels[sourceId].length) return
+      Service.LevelService.getLevelBySource(sourceId).then(data => {
+        state.levels[sourceId] = data
+      })
+    },
+    setTopicBySource: ({ commit, state }, sourceId) => {
+      if (state.topics[sourceId] && state.topics[sourceId].length) return
+      Service.TopicService.getTopicBySource(sourceId).then(data => {
+        state.topics[sourceId] = data
+      })
+    },
+    selectTopic: ({ commit, state }, { sourceId, levelId }) => {
+      for (var i in state.topics[sourceId]) {
+        if (state.topics[sourceId][i].id == levelId) {
+          state.topics[sourceId][i].checked = !state.topics[sourceId][i].checked
+          break
+        }
+      }
+    },
+    setWordBySource: ({ commit, state }, sourceId) => {
+      if (state.words[sourceId] && state.words[sourceId].length) return Promise.resolve()
+      return Service.WordService.getWordBySource(sourceId).then(data => {
+        state.words[sourceId] = data
+      })
+    }
+  }
 }
 
 const moduleB: Module<ModuleBInterface, RootStateInterface> = {
-    state: { countb: 0 },
-    mutations: {
-        increment(state) {
-            // `state` is the local module state
-            state.countb++
-        }
-    },
-
-    getters: {
-        doubleCount(state) {
-            return state.countb * 2
-        }
-    },
-
-    actions: {
-        test(context){
-            console.log(context.rootState.manageDataModule.levels);
-        }
+  state: { countb: 0 },
+  mutations: {
+    increment (state) {
+      // `state` is the local module state
+      state.countb++
     }
+  },
+
+  getters: {
+    doubleCount (state) {
+      return state.countb * 2
+    }
+  },
+
+  actions: {
+    test (context) {
+      console.log(context.rootState.manageDataModule.levels)
+    }
+  }
 }
 
 export default new Vuex.Store({
-    modules: {
-        manageDataModule,
-        moduleB
-    }
+  modules: {
+    manageDataModule,
+    moduleB
+  }
 })
