@@ -9,3 +9,7 @@ export interface GetLevelBySource {
 export interface GetTopicBySource {
     (sourceId: string): Array<Topic>;
 }
+
+export interface GetWordBySource {
+    (sourceId: string): Array<Topic>;
+}

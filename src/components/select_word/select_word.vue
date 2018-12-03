@@ -1,19 +1,7 @@
 <template>
     <Carousel>
-        <div class="swiper-slide">
-            <Word></Word>
-        </div>
-        <div class="swiper-slide">
-            <Word></Word>
-        </div>
-        <div class="swiper-slide">
-            <Word></Word>
-        </div>
-        <div class="swiper-slide">
-            <Word></Word>
-        </div>
-        <div class="swiper-slide">
-            <Word></Word>
+        <div class="swiper-slide" v-for="(item, index) in words" :key="index">
+            <WordComponent :word="item"></WordComponent>
         </div>
     </Carousel>
 </template>

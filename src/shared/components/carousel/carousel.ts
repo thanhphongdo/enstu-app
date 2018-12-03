@@ -9,6 +9,8 @@ export default class Carousel extends Vue {
     @Prop() private msg!: string;
 
     mounted() {
-        var swiper = new Vue.prototype.Swiper('.swiper-container');
+        setTimeout(() => {
+            var swiper = new Vue.prototype.Swiper('.swiper-container');
+        }, 1000);
     }
 }

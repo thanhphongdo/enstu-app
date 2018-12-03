@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions, Action, Getter, Mutation, Module } from 'vuex';
 import { Actions } from './enums';
-import { Source, Level, Topic } from './models/index';
+import { Source, Level, Topic, Word, LearningSource } from './models/index';
 import * as Service from './services/index';
 
 Vue.use(Vuex);
@@ -69,6 +69,9 @@ export interface ManageDataModule{
     topics: {
         [sourceId: string]: Array<Topic>;
     };
+    words: {
+        [sourceId: string]: Array<Word>
+    }
     [key: string]: any;
 }
 
@@ -89,6 +92,9 @@ const manageDataModule: Module<ManageDataModule, RootStateInterface> = {
         },
         topics: {
             EoT3y7nabE: []
+        },
+        words:{
+            EoT3y7nabE: []
         }
     },
     getters: {
@@ -97,7 +103,10 @@ const manageDataModule: Module<ManageDataModule, RootStateInterface> = {
         },
         getTopicBySource: (state) => (sourceID: string) => {
             return state.topics[sourceID];
-        }
+        },
+        getWordBySource: (state) => (sourceID: string) => {
+            return state.words[sourceID];
+        },
     },
     mutations: {
 
@@ -122,7 +131,13 @@ const manageDataModule: Module<ManageDataModule, RootStateInterface> = {
                     break;
                 }
             }
-        }
+        },
+        setWordBySource:({ commit, state }, sourceId) => {
+            if (state.words[sourceId] && state.words[sourceId].length) return Promise.resolve();
+            return Service.WordService.getWordBySource(sourceId).then(data => {
+                state.words[sourceId] = data;
+            });
+        },
     }
 }
 
