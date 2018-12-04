@@ -1,39 +1,40 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { BaseVue } from '../../shared/components/index';
 import template from './select_topic.vue'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { Topic } from '../../models/index'
 import { GetTopicBySource, SetTopicBySource } from '../../interfaces/index'
 
 @Component({
-  name: 'SelectTopic',
-  mixins: [template],
-  computed: mapGetters(['getTopicBySource']),
-  methods: {
-    ...mapActions(['setTopicBySource', 'selectTopic'])
-  }
+	name: 'SelectTopic',
+	mixins: [template],
+	computed: mapGetters(['getTopicBySource']),
+	methods: {
+		...mapActions(['setTopicBySource', 'selectTopic'])
+	}
 })
-export default class SelectTopic extends Vue {
-    @Prop() private msg!: string;
+export default class SelectTopic extends BaseVue {
+	@Prop() private msg!: string;
 
-    getTopicBySource!: GetTopicBySource;
+	getTopicBySource!: GetTopicBySource;
 
-    setTopicBySource!: SetTopicBySource;
-    selectTopic: any;
+	setTopicBySource!: SetTopicBySource;
+	selectTopic: any;
 
-    mounted () {
-      this.setTopicBySource('EoT3y7nabE')
-    }
+	mounted() {
+		this.setTopicBySource('EoT3y7nabE')
+	}
 
-    nextTopic () {
-      this.$emit('selectTopicAction', {
+	nextTopic() {
+		this.$emit('selectTopicAction', {
 
-      })
-    }
+		})
+	}
 
-  // selectTopic(){
-  //     this.setTopicBySource('EoT3y7nabE');
-  //     // this.$emit('selectTopicAction', {
-  //     //     Topic: ''
-  //     // })
-  // }
+	// selectTopic(){
+	//     this.setTopicBySource('EoT3y7nabE');
+	//     // this.$emit('selectTopicAction', {
+	//     //     Topic: ''
+	//     // })
+	// }
 }

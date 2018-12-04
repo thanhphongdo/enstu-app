@@ -1,9 +1,9 @@
 <template>
-    <Carousel>
-        <div class="swiper-slide" v-for="(item, index) in words" :key="index">
-            <WordComponent :word="item"></WordComponent>
-        </div>
-    </Carousel>
+  <Carousel ref="carousel">
+    <div class="swiper-slide" v-for="(item, index) in words" :key="index">
+      <WordComponent :word="item" :sourceId="sourceId" v-on:onSelected="onSelectedWord"></WordComponent>
+    </div>
+  </Carousel>
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

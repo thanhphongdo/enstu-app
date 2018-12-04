@@ -5,7 +5,7 @@
             Chọn trình độ Anh Ngữ của bạn
         </div>
         <div class="col s12 overflow-auto flex-1">
-            <div class="col s12" v-for="(item, index) in getLevelBySource('EoT3y7nabE')" :key="index">
+            <div class="col s12" v-for="(item, index) in getLevelBySource(getSharedData('currentSource'))" :key="index">
                 <button class="waves-effect waves-orange-lighten-1 btn-flat light-blue-text text-darken-4 width-100 btn-sub"
                     @click="selectLevel(item.id)">
                     {{item.name}}
