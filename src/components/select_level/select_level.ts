@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { BaseVue } from '../../shared/components/index';
+import { BaseVue } from '../../shared/components/index'
 import template from './select_level.vue'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { Level } from '../../models/index'
@@ -23,13 +23,20 @@ export default class SelectLevel extends BaseVue {
 	test: any;
 
 	mounted() {
-		this.setLevelBySource('EoT3y7nabE')
+		var self = this;
+		this.showWaiting();
+		this.setLevelBySource('EoT3y7nabE').then(data => {
+			self.hideWaiting();
+		}).catch(err => {
+			self.hideWaiting();
+		})
 		this.test()
 	}
 
 	selectLevel(levelId: string) {
 		this.$emit('selectLevelAction', {
 			levelId: levelId
-		})
+		});
+		this.showWaiting();
 	}
 }

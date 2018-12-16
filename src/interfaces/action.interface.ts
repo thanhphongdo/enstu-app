@@ -1,15 +1,15 @@
-import { Level, Topic, Word } from '../models/index';
+import { Level, Topic, Word } from '../models/index'
 
 export interface SetSharedData {
 	(key: string, value: any): void;
 }
 
 export interface SetLevelBySource {
-	(sourceId: string): any;
+	(sourceId: string): Promise<Level[]>;
 }
 
 export interface SetTopicBySource {
-	(sourceId: string): any;
+	(sourceId: string): Promise<Topic[]>;
 }
 
 export interface SetWordBySource {

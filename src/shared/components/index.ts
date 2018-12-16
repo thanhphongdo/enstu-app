@@ -1,1 +1,1 @@
-export * from './base_vue';
+export * from './base_vue'

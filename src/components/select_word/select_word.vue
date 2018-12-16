@@ -1,7 +1,7 @@
 <template>
   <Carousel ref="carousel">
     <div class="swiper-slide" v-for="(item, index) in words" :key="index">
-      <WordComponent :word="item" :sourceId="sourceId" v-on:onSelected="onSelectedWord"></WordComponent>
+      <WordComponent :word="item" :sourceId="sourceId" v-on:onSelected="onSelectedWord(item)"></WordComponent>
     </div>
   </Carousel>
 </template>

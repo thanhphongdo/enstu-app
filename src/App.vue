@@ -44,30 +44,45 @@
             </ul>
         </div>
     </footer>
+    <div class="waiting">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
 <script>
 import {
-  mapActions
+    mapActions
 } from 'vuex'
 import {
-  mapGetters
+    mapGetters
 } from 'vuex'
 import {
-  Actions,
-  Getters
+    Actions,
+    Getters
 } from './enums'
 export default {
-  name: 'App',
-  components: {},
-  data () {
-    return {}
-  },
-  mounted () {
-    M.AutoInit()
-  },
-  methods: {},
-  computed: {}
+    name: 'App',
+    components: {},
+    data() {
+        return {}
+    },
+    mounted() {
+        M.AutoInit()
+    },
+    methods: {},
+    computed: {}
 }
 </script>
